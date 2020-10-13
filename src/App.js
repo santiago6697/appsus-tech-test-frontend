@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom'
-import Home from './component/Home'
-import { Container, Spinner } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import './App.css';
-import { firebaseAuth } from './provider/AuthProvider'
-import Auth from './component/auth/Auth'
-import TopBar from './component/layout/TopBar'
 import { BrowserRouter } from 'react-router-dom'
-
 
 const Layout = React.lazy(() => import('./component/layout/Layout'))
 

@@ -20,32 +20,12 @@ class Home extends Component {
         };
     }
     componentDidMount() {
-        switch (this.props.selectedItemType) {
-            case "songs":
-                let songs = [];
-            for (let i = 0; i < 10; i++) {
-                songs.push(this.state.song);
-            }
-            this.setState({...this.state, 
-                songs: songs
-            });
-                break;
-            default:
-
-                break;
-        }
-    }
-
-    componentDidUpdate() {
-        switch (this.props.selectedItemType) {
-            case "songs":
-
-                break;
-            default:
-
-                break;
-        }
-
+        let songs = [];
+        songs.push(this.state.song);
+        console.log(songs)
+        this.setState({...this.state,
+            songs: songs
+        });
     }
 
     render() {
@@ -53,10 +33,11 @@ class Home extends Component {
             <Container fluid className="py-3" >
                 <Row>
                     <Col>
+                        <p>Songs</p>
                         <div className="card-scroll">
                             {
                                 this.state.songs.map(song => {
-                                    return (<ItemCard title={song.title} 
+                                    return (<ItemCard title={song.title}
                                                 imageURL={song.imageURL}
                                                 rating={song.rating}
                                                 length={song.length}

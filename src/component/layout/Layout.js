@@ -8,6 +8,15 @@ class Layout extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            token: null
+        }
+    }
+
+    componentDidMount = async () => {
+        this.setState({...this.state, 
+            token: localStorage.getItem("token")
+        });
     }
 
     render () {
@@ -16,9 +25,8 @@ class Layout extends Component {
             <div className="App">
                 <div className="app-body">
                     <main className="main">
-                        { token ? <TopBar changeSelectedItemType={this.changeSelectedItemType} /> : null}
+                        { this.state.token ? <TopBar changeSelectedItemType={this.changeSelectedItemType} /> : null}
                         <Container fluid className="p-0">
-                            <Nav.Link to="/home">Home</Nav.Link>
                             <Switch>
                                 {
                                     routes.map((route, idx) => {

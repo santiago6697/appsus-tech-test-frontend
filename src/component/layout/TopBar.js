@@ -11,9 +11,9 @@ const TopBar = (props) => {
         <Navbar bg="dark" variant="dark">
             <Nav className="mr-auto">
                 <Link to="/albums">Albums</Link>
-               <Link to="/home">Songs</Link>
-               <Link to="/songs/new">New Song</Link>
-               <Link to="/album/new">New Album</Link>
+                <Link to="/home">Songs</Link>
+                <Link to="/songs/new">New Song</Link>
+                <Link to="/album/new">New Album</Link>
             </Nav>
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />

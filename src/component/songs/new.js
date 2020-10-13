@@ -1,5 +1,6 @@
 import React, { Component, useContext } from 'react';
-import { Container, Row, Col, Button, InputGroup, Card, CardGroup } from 'react-bootstrap';
+import { Container, Row, Col, Card, CardGroup } from 'react-bootstrap';
+import record from "../../assets/images/record.png";
 import Form from './Form';
 
 class NewSong extends Component {
@@ -26,10 +27,19 @@ class NewSong extends Component {
     render() {
         return (
             <Container fluid className="py-3" >
-                <Row>
-                    <Col>
-                        <h2>Tu nueva canción</h2>
-                        <Form submitData={this.submitData}/>
+                <Row className="justify-content-center">
+                    <Col lg="3" md="6">
+                        <Card className="bg-dark text-white item-card">
+                            <div className="card-image">
+                                <Card.Img variant="top" src={record} />
+                            </div>
+                            <Card.Body>
+                                <Card.Title className="text-center">New song</Card.Title>
+                                <Card.Text>
+                                    <Form submitData={this.submitData} />
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
                     </Col>
                 </Row>
             </Container>
