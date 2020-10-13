@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Row, Col, Form, Card, Container } from 'react-bootstrap'
+import { Button, Row, Col, Container } from 'react-bootstrap'
 import { firebaseAuth } from '../../provider/AuthProvider'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
@@ -11,7 +11,6 @@ class Auth extends Component {
         this.state = {
             alreadyMet: true
         };
-        console.log(this.state)
     }
 
     handleClick (event) {

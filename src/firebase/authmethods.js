@@ -28,8 +28,7 @@ export const authMethods = {
                 const token = await Object.entries(res.user)[5][1].b
                 //set token to localStorage 
                 await localStorage.setItem('token', token)
-
-
+                await localStorage.setItem('email', email)
                 setToken(window.localStorage.token)
             })
             .catch(err => {

@@ -6,13 +6,24 @@ import './App.css';
 import { firebaseAuth } from './provider/AuthProvider'
 import Auth from './component/auth/Auth'
 import TopBar from './component/layout/TopBar'
+import { BrowserRouter } from 'react-router-dom'
+
+
+const Layout = React.lazy(() => import('./component/layout/Layout'))
 
 class App extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            selectedItemType: "songs"
+            selectedItemType: "songs",
+            token: null
         }
+    }
+
+    componentDidMount = async () => {
+        this.setState({...this.state,
+            token: await localStorage.getItem('token')
+        });
     }
 
     changeSelectedItemType = (selectedItemType) => {
@@ -23,16 +34,31 @@ class App extends Component {
         }
     }
 
-    render () {
-        let token = localStorage.getItem('token');
+    loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
 
-        return (
+    render () {
+        let routes = (
             <Container fluid className="p-0">
-                { token !== null ? <TopBar changeSelectedItemType={this.changeSelectedItemType} /> : null}
                 <Switch>
-                    <Route exact path='/' render={rProps => token === null ? <Auth /> : <Home selectedItemType={this.state.selectedItemType} />} />
+                    <Route path='/' name="Music" render={props => <Layout {...props} />} />
                 </Switch>
             </Container>
+        )
+
+        return (
+            <div>
+                <React.Suspense fallback={this.loading()}>
+                    <BrowserRouter>
+                        {
+                          localStorage.getItem('token') ? <Redirect to='/home'/> : <Redirect to='/' />
+                        }
+                        {routes}
+                    </BrowserRouter>
+                </React.Suspense>
+
+
+
+            </div>
         );
     }
 }

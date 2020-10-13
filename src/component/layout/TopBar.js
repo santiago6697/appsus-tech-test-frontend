@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Navbar, Form, Nav, Button, FormControl } from 'react-bootstrap'
 import { firebaseAuth } from '../../provider/AuthProvider'
+import {Redirect, Route, Switch, Link} from 'react-router-dom'
 
 const TopBar = (props) => {
 
@@ -9,8 +10,10 @@ const TopBar = (props) => {
     return (
         <Navbar bg="dark" variant="dark">
             <Nav className="mr-auto">
-                <Nav.Link onClick={e => props.changeSelectedItemType("albums")}>Albums</Nav.Link>
-                <Nav.Link onClick={e => props.changeSelectedItemType("songs")}>Songs</Nav.Link>
+                <Link to="/albums">Albums</Link>
+               <Link to="/home">Songs</Link>
+               <Link to="/songs/new">New Song</Link>
+               <Link to="/album/new">New Album</Link>
             </Nav>
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
